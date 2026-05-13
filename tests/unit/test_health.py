@@ -12,23 +12,27 @@ client = TestClient(app)
 class TestSimpleHealth:
     """Tests for GET /health/ — fast check with no external dependencies."""
 
+    @pytest.mark.unit
     def test_returns_200(self):
         """Simple health endpoint must return HTTP 200."""
         response = client.get("/health/")
         assert response.status_code == 200
 
+    @pytest.mark.unit
     def test_status_field_is_ok(self):
         """Response body must contain status == 'ok'."""
         response = client.get("/health/")
         data = response.json()
         assert data["status"] == "ok"
 
+    @pytest.mark.unit
     def test_timestamp_field_present(self):
         """Response body must include a timestamp field."""
         response = client.get("/health/")
         data = response.json()
         assert "timestamp" in data
 
+    @pytest.mark.unit
     def test_content_type_is_json(self):
         """Response must be JSON."""
         response = client.get("/health/")
@@ -38,17 +42,20 @@ class TestSimpleHealth:
 class TestLivenessProbe:
     """Tests for GET /health/live — Kubernetes liveness probe."""
 
+    @pytest.mark.unit
     def test_returns_200(self):
         """Liveness probe must return HTTP 200."""
         response = client.get("/health/live")
         assert response.status_code == 200
 
+    @pytest.mark.unit
     def test_status_field_is_alive(self):
         """Response body must contain status == 'alive'."""
         response = client.get("/health/live")
         data = response.json()
         assert data["status"] == "alive"
 
+    @pytest.mark.unit
     def test_timestamp_field_present(self):
         """Response body must include a timestamp field."""
         response = client.get("/health/live")
@@ -67,6 +74,7 @@ _HEALTHY_TRANSPARENCY = {
 class TestReadinessProbe:
     """Tests for GET /health/ready — readiness probe with mocked external call."""
 
+    @pytest.mark.unit
     def test_returns_200_when_transparency_healthy(self):
         """Ready endpoint returns 200 when external API is healthy."""
         with patch(
@@ -76,6 +84,7 @@ class TestReadinessProbe:
             response = client.get("/health/ready")
         assert response.status_code == 200
 
+    @pytest.mark.unit
     def test_status_is_ready(self):
         """Response body must contain status == 'ready'."""
         with patch(
@@ -85,6 +94,7 @@ class TestReadinessProbe:
             response = client.get("/health/ready")
         assert response.json()["status"] == "ready"
 
+    @pytest.mark.unit
     def test_still_ready_when_transparency_degraded(self):
         """Ready endpoint stays 200 even when external API is degraded."""
         degraded = {**_HEALTHY_TRANSPARENCY, "status": "unhealthy"}
@@ -136,17 +146,20 @@ class TestFullHealthStatus:
         ):
             yield
 
+    @pytest.mark.unit
     def test_returns_200(self):
         """Status endpoint returns HTTP 200 when all services are healthy."""
         response = client.get("/health/status")
         assert response.status_code == 200
 
+    @pytest.mark.unit
     def test_overall_status_is_healthy(self):
         """Response body must report overall status == 'healthy'."""
         response = client.get("/health/status")
         data = response.json()
         assert data["status"] == "healthy"
 
+    @pytest.mark.unit
     def test_services_dict_contains_expected_keys(self):
         """Response must include transparency_api, database and redis in services."""
         response = client.get("/health/status")
@@ -155,6 +168,7 @@ class TestFullHealthStatus:
         assert "database" in services
         assert "redis" in services
 
+    @pytest.mark.unit
     def test_status_degraded_when_one_service_unhealthy(self):
         """Overall status must be 'degraded' when any service is unhealthy."""
         unhealthy_db = {**_HEALTHY_DB, "status": "unhealthy"}
