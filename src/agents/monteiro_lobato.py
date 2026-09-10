@@ -260,6 +260,19 @@ class KidsProgrammingAgent(BaseKidsAgent):
     personality_prompt = PERSONALITY_PROMPT
 
     def __init__(self, config: dict[str, Any] | None = None):
+        """Register the agent with its fixed identity and capability list.
+
+        The name, description and capabilities are not configurable: the
+        router resolves this agent by the literal name ``"monteiro_lobato"``,
+        and the safety envelope (``allowed_topics``, ``personality_prompt``)
+        is enforced by ``BaseKidsAgent`` rather than by ``config``.
+
+        Args:
+            config: Optional overrides passed straight to ``BaseKidsAgent``.
+                Retries are pinned at 3 and the timeout at 60 seconds, since a
+                child waiting on an answer should get the fallback text rather
+                than a long silence.
+        """
         super().__init__(
             name="monteiro_lobato",
             description="Monteiro Lobato - Educador de Programacao para Criancas do Cidadao.AI",
