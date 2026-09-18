@@ -4,12 +4,55 @@ Enables natural language queries like "Ministério da Saúde" -> code "26000"
 """
 
 import re
+from typing import TypedDict
 
 from unidecode import unidecode
 
+
+class OrganizationRecord(TypedDict):
+    """A single federal organization as stored in FEDERAL_ORGANIZATIONS.
+
+    Attributes:
+        official_name: Name as published by the Portal da Transparência.
+        aliases: Spellings accepted in natural language queries, including
+            unaccented and abbreviated forms.
+    """
+
+    official_name: str
+    aliases: list[str]
+
+
+class OrganizationMatch(TypedDict):
+    """One organization recognised inside a free-text query.
+
+    Attributes:
+        code: SIAFI organization code (e.g. ``"26000"``).
+        name: Official organization name.
+        matched_text: Normalized alias that triggered the match.
+    """
+
+    code: str
+    name: str
+    matched_text: str
+
+
+class OrganizationListing(TypedDict):
+    """An organization as returned by :meth:`OrganizationMapper.list_all_organizations`.
+
+    Attributes:
+        code: SIAFI organization code.
+        name: Official organization name.
+        aliases: Every accepted spelling for this organization.
+    """
+
+    code: str
+    name: str
+    aliases: list[str]
+
+
 # Complete mapping of Brazilian federal government organizations
 # Source: Portal da Transparência Federal API
-FEDERAL_ORGANIZATIONS = {
+FEDERAL_ORGANIZATIONS: dict[str, OrganizationRecord] = {
     # Ministérios e Órgãos Superiores
     "20000": {
         "official_name": "Presidência da República",
@@ -206,14 +249,15 @@ FEDERAL_ORGANIZATIONS = {
 class OrganizationMapper:
     """Maps organization names to official codes for API queries"""
 
-    def __init__(self):
-        self.orgs = FEDERAL_ORGANIZATIONS
+    def __init__(self) -> None:
+        """Load the organization table and build the alias lookup index."""
+        self.orgs: dict[str, OrganizationRecord] = FEDERAL_ORGANIZATIONS
         # Build reverse index for fast lookup
         self._build_reverse_index()
 
-    def _build_reverse_index(self):
+    def _build_reverse_index(self) -> None:
         """Build reverse index from aliases to codes"""
-        self.alias_to_code = {}
+        self.alias_to_code: dict[str, str] = {}
 
         for code, org_data in self.orgs.items():
             # Add official name
@@ -274,7 +318,7 @@ class OrganizationMapper:
 
         return None
 
-    def extract_organizations_from_text(self, text: str) -> list[dict]:
+    def extract_organizations_from_text(self, text: str) -> list[OrganizationMatch]:
         """
         Extract all organization mentions from text.
 
@@ -297,7 +341,7 @@ class OrganizationMapper:
         if not text:
             return []
 
-        found = []
+        found: list[OrganizationMatch] = []
         normalized_text = self._normalize(text)
 
         # Search for each alias in the text
@@ -315,11 +359,11 @@ class OrganizationMapper:
 
         return found
 
-    def get_organization_info(self, code: str) -> dict | None:
+    def get_organization_info(self, code: str) -> OrganizationRecord | None:
         """Get full organization information by code"""
         return self.orgs.get(code)
 
-    def list_all_organizations(self) -> list[dict]:
+    def list_all_organizations(self) -> list[OrganizationListing]:
         """List all available organizations"""
         return [
             {
@@ -332,7 +376,7 @@ class OrganizationMapper:
 
 
 # Global singleton instance
-_mapper_instance = None
+_mapper_instance: OrganizationMapper | None = None
 
 
 def get_organization_mapper() -> OrganizationMapper:
