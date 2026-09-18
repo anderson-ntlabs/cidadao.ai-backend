@@ -20,7 +20,21 @@ from .deodoro import AgentContext, AgentMessage, AgentResponse, BaseAgent
 
 
 class MemoryEntry(BaseModel):
-    """Base memory entry."""
+    """Fields every memory layer shares, whatever the layer stores.
+
+    Subclassed by :class:`EpisodicMemory`, :class:`SemanticMemory` and
+    :class:`ConversationMemory`; never persisted on its own.
+
+    Attributes:
+        id: Unique memory identifier, also the key used in the vector store.
+        content: Arbitrary payload of the memory.
+        timestamp: Creation time in UTC. Drives age-based forgetting.
+        importance: Weight consulted when forgetting and when consolidating;
+            the highest importance in a group survives a merge.
+        tags: Free-form labels, unioned when memories are merged.
+        metadata: Bookkeeping written by the agent, such as the
+            ``consolidated_from`` trail left by a consolidation run.
+    """
 
     id: str = PydanticField(..., description="Unique memory ID")
     content: dict[str, Any] = PydanticField(..., description="Memory content")
@@ -31,7 +45,20 @@ class MemoryEntry(BaseModel):
 
 
 class EpisodicMemory(MemoryEntry):
-    """Episodic memory entry for specific events/investigations."""
+    """One concrete investigation the system lived through.
+
+    Written by ``store_investigation`` after Abaporu finishes an
+    investigation, and kept in Redis and in the vector store so that a later
+    query can retrieve it by similarity.
+
+    Attributes:
+        investigation_id: Investigation this memory belongs to.
+        user_id: Requesting user, when the investigation had one.
+        session_id: Session the investigation ran in, when applicable.
+        query: Question as originally asked.
+        result: Investigation result, stored verbatim.
+        context: Extra situational data captured alongside the result.
+    """
 
     investigation_id: str = PydanticField(..., description="Investigation ID")
     user_id: str | None = PydanticField(default=None, description="User ID")
@@ -42,7 +69,17 @@ class EpisodicMemory(MemoryEntry):
 
 
 class SemanticMemory(MemoryEntry):
-    """Semantic memory entry for general knowledge."""
+    """A generalisation the system holds independently of any one case.
+
+    Facts about patterns and anomalies rather than about a single
+    investigation, kept in the vector store for similarity retrieval.
+
+    Attributes:
+        concept: Knowledge item this memory asserts.
+        relationships: Other concepts this one connects to.
+        evidence: References backing the concept.
+        confidence: How strongly the concept is held, from 0.0 to 1.0.
+    """
 
     concept: str = PydanticField(..., description="Concept or knowledge item")
     relationships: list[str] = PydanticField(
@@ -57,7 +94,19 @@ class SemanticMemory(MemoryEntry):
 
 
 class ConversationMemory(MemoryEntry):
-    """Memory for conversation context."""
+    """A single turn of an ongoing dialog.
+
+    Kept in Redis under a 24h TTL and evicted by
+    :meth:`ContextMemoryAgent._manage_conversation_size` once a conversation
+    grows past ``max_conversation_turns``.
+
+    Attributes:
+        conversation_id: Conversation this turn belongs to.
+        turn_number: Position of the turn, used to order and to evict.
+        speaker: Who produced the message, ``"user"`` or ``"agent"``.
+        message: Message content.
+        intent: Detected intent, when the router classified the turn.
+    """
 
     conversation_id: str = PydanticField(..., description="Conversation ID")
     turn_number: int = PydanticField(..., description="Turn in conversation")
@@ -742,6 +791,23 @@ class ContextMemoryAgent(BaseAgent):
         - By importance: Remove low-importance memories
         - By ID: Remove specific memory by ID
         - By pattern: Remove memories matching pattern
+
+        Args:
+            payload: Selects what to forget. ``strategy`` picks the rule and
+                defaults to ``"age"``; ``max_age_days`` bounds the ``"age"``
+                strategy and defaults to ``self.memory_decay_days``. An
+                ``investigation_id`` is honoured on top of the chosen
+                strategy and drops every episodic memory of that
+                investigation.
+            context: Caller context, accepted for signature symmetry with the
+                other handlers and not read by this one.
+
+        Returns:
+            On success, ``status`` ``"completed"`` with ``deleted_count`` and
+            the ``strategy`` applied. On failure, ``status`` ``"error"`` with
+            ``error`` and a count under the *different* key
+            ``forgotten_count`` — a caller reading ``deleted_count``
+            unconditionally will not find it on the error path.
         """
         try:
             strategy = payload.get("strategy", "age")  # age, importance, id, pattern
@@ -864,6 +930,20 @@ class ContextMemoryAgent(BaseAgent):
         2. Merge similar memories keeping most important
         3. Update combined memory with aggregated information
         4. Remove duplicate/merged memories
+
+        Args:
+            payload: ``similarity_threshold`` sets how close two memories must
+                be to merge, from 0.0 to 1.0, and defaults to ``0.85``.
+            context: Caller context, accepted for signature symmetry with the
+                other handlers and not read by this one.
+
+        Returns:
+            On success, ``status`` ``"completed"`` with ``consolidated_count``
+            (memories absorbed), ``merged_groups`` (how many groups were
+            formed) and ``groups`` (one entry per group, each naming the
+            surviving ``consolidated_id`` and the ``merged_ids`` it replaced).
+            Fewer than two stored memories is a success with a zero count. On
+            failure, ``status`` ``"error"`` with ``error``.
         """
         try:
             similarity_threshold = payload.get("similarity_threshold", 0.85)
@@ -990,6 +1070,16 @@ class ContextMemoryAgent(BaseAgent):
         - Merge tags (unique union)
         - Aggregate metadata
         - Use most recent timestamp
+
+        Args:
+            memories: Group to merge, at least one. Ordered internally by
+                importance and then by timestamp, both descending.
+
+        Returns:
+            A copy of the highest-ranked memory carrying the union of every
+            tag in the group, plus ``metadata.consolidated_from`` listing the
+            source ids, ``metadata.consolidated_count`` and
+            ``metadata.consolidation_timestamp``. The input is not mutated.
         """
         # Sort by importance (descending)
         importance_order = {
@@ -1102,7 +1192,14 @@ class ContextMemoryAgent(BaseAgent):
             )
 
     async def _manage_conversation_size(self, conversation_id: str) -> None:
-        """Evict oldest turns when a conversation exceeds ``max_conversation_turns``."""
+        """Evict oldest turns when a conversation exceeds ``max_conversation_turns``.
+
+        Args:
+            conversation_id: Conversation to trim. Turns are ordered by the
+                numeric suffix of their Redis key and the oldest surplus turns
+                are deleted, so the most recent ``max_conversation_turns``
+                survive.
+        """
         pattern = f"{self.conversation_key}:{conversation_id}:*"
         keys = await self.redis_client.keys(pattern)
 
