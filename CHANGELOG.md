@@ -16,6 +16,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- **CI installs greenlet again**: SQLAlchemy 2.1.0 stopped pulling `greenlet` in by default, so `tests/conftest.py` failed to import the asyncio engine; `pyproject.toml` and `requirements.txt` now ask for `sqlalchemy[asyncio]`
+
 ### Changed
 - **Module headers now declare the MIT license** (164 files in `src/` and `tests/`): they said "Proprietary - All rights reserved", contradicting `LICENSE`, which has always been MIT
 - **README opens with a welcome for BBSIA reviewers** instead of the discontinuation notice, pointing to the four agents submitted to the Banco Brasileiro de Soluções de IA (Enap/LIIA); the mirror status and the contact channel stay stated
