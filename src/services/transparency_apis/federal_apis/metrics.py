@@ -6,7 +6,7 @@ including request performance, retry behavior, cache efficiency, and error rates
 
 Author: Anderson Henrique da Silva
 Created: 2025-10-12 18:35:24 -03
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import asyncio

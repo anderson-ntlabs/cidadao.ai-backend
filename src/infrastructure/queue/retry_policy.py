@@ -3,7 +3,7 @@ Module: infrastructure.queue.retry_policy
 Description: Retry policies and mechanisms for batch processing
 Author: Anderson H. Silva
 Date: 2025-01-25
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import asyncio

@@ -4,7 +4,7 @@ Codinome: Lina Bo Bardi - Arquiteta e Designer de Interfaces
 Description: Agent specialized in frontend development guidance for Cidadão.AI
 Author: Anderson H. Silva
 Date: 2025-12-06
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from enum import Enum

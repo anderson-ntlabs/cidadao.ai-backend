@@ -3,7 +3,7 @@ Module: agents.bonifacio_agent
 Description: José Bonifácio - Public Policy Agent specialized in analyzing policy effectiveness
 Author: Anderson H. Silva
 Date: 2025-01-24
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import hashlib

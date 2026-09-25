@@ -3,7 +3,7 @@ Module: services.cache_warming_service
 Description: Cache warming strategies for improved performance
 Author: Anderson H. Silva
 Date: 2025-01-25
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import asyncio

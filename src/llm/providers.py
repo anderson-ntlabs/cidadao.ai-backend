@@ -3,7 +3,7 @@ Module: llm.providers
 Description: LLM provider integrations for Groq, Together AI, and Hugging Face
 Author: Anderson H. Silva
 Date: 2025-01-24
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import asyncio

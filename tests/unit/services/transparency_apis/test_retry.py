@@ -5,7 +5,7 @@ Tests the retry decorators, backoff calculation, and retry context manager.
 
 Author: Anderson Henrique da Silva
 Created: 2025-10-12 15:53:52 -03
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import asyncio

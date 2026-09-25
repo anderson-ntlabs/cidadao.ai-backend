@@ -3,7 +3,7 @@ Module: ml.spectral_analyzer
 Description: Spectral analysis using Fourier transforms for government transparency data
 Author: Anderson H. Silva
 Date: 2025-07-19
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import warnings

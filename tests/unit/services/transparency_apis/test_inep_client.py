@@ -6,7 +6,7 @@ and data fetching methods.
 
 Author: Anderson Henrique da Silva
 Created: 2025-10-12 18:31:39 -03
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from unittest.mock import AsyncMock, MagicMock, patch

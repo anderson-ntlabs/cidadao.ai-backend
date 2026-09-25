@@ -6,7 +6,7 @@ including federal, state, TCE, and CKAN APIs.
 
 Author: Anderson Henrique da Silva
 Created: 2025-10-09
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from fastapi import APIRouter, HTTPException, Query

@@ -7,7 +7,7 @@ from multiple sources with intelligent routing and caching.
 Author: Anderson Henrique da Silva
 Location: Minas Gerais, Brasil
 Updated: 2025-10-16 16:30:00 -03:00
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from datetime import datetime

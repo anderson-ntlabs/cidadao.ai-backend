@@ -3,7 +3,7 @@ Module: infrastructure.queue.tasks.katana_tasks
 Description: Celery tasks for Katana Scan API integration
 Author: Anderson H. Silva
 Date: 2025-10-07
-License: Proprietary - All rights reserved
+License: MIT
 
 These tasks monitor Katana Scan API for new dispensas de licitação
 and trigger automatic investigations on suspicious patterns.

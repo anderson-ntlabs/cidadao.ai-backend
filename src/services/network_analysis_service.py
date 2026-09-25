@@ -3,7 +3,7 @@ Module: services.network_analysis_service
 Description: Network analysis service for entity relationship graphs
 Author: Anderson Henrique da Silva
 Date: 2025-10-09
-License: Proprietary - All rights reserved
+License: MIT
 
 This service builds and analyzes entity relationship graphs from investigation data.
 """

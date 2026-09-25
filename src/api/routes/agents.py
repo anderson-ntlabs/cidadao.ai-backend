@@ -3,7 +3,7 @@ Module: api.routes.agents
 Description: Direct agent endpoints for specialized AI agents
 Author: Anderson H. Silva
 Date: 2025-09-25
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from typing import Any

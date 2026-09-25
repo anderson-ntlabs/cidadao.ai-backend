@@ -4,7 +4,7 @@ Codinome: Maria Quitéria - Guardiã da Integridade
 Description: Agent specialized in security auditing and system integrity protection
 Author: Anderson H. Silva
 Date: 2025-07-23
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from dataclasses import dataclass

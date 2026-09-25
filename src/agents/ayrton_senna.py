@@ -4,7 +4,7 @@ Codinome: Ayrton Senna - Navegador das Rotas Perfeitas
 Description: Semantic router for directing queries to appropriate agents with precision and speed
 Author: Anderson H. Silva
 Date: 2025-01-24
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import re

@@ -4,7 +4,7 @@ Description: Dandara - Social Justice Agent specialized in monitoring inclusion 
 Author: Anderson H. Silva
 Date: 2025-01-24
 Updated: 2025-10-12 (Added real API integrations)
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import asyncio

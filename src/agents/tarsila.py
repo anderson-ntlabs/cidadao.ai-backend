@@ -4,7 +4,7 @@ Codinome: Tarsila do Amaral - Educadora de Design para Criancas
 Description: RAG agent specialized in teaching design and aesthetics to kids
 Author: Anderson H. Silva
 Date: 2025-12-09
-License: Proprietary - All rights reserved
+License: MIT
 
 Inherits from BaseKidsAgent for centralized safety features.
 """

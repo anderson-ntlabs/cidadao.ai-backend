@@ -6,7 +6,7 @@ and anomaly detection.
 
 Author: Anderson Henrique da Silva
 Created: 2025-10-09 15:30:00 -03 (Minas Gerais, Brazil)
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import asyncio

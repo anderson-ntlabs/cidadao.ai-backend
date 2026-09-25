@@ -3,7 +3,7 @@ Module: services.auto_investigation_service
 Description: Auto Investigation Service - 24/7 Contract Monitoring and Analysis
 Author: Anderson Henrique da Silva
 Date: 2025-10-07 18:11:37
-License: Proprietary - All rights reserved
+License: MIT
 
 This service continuously monitors government contracts (new and historical)
 and automatically triggers investigations when suspicious patterns are detected.

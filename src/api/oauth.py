@@ -3,7 +3,7 @@ Module: api.oauth
 Description: OAuth2 implementation with multiple providers
 Author: Anderson H. Silva
 Date: 2025-01-15
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import base64

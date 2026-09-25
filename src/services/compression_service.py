@@ -3,7 +3,7 @@ Module: services.compression_service
 Description: Advanced compression service with metrics and optimization
 Author: Anderson H. Silva
 Date: 2025-01-25
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import gzip

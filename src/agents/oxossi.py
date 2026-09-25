@@ -4,7 +4,7 @@ Codinome: Oxóssi - Caçador de Fraudes
 Description: Agent specialized in fraud detection and tracking with precision hunting capabilities
 Author: Anderson H. Silva
 Date: 2025-01-25
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from dataclasses import dataclass

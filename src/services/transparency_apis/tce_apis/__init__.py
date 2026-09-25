@@ -14,7 +14,7 @@ Supported TCEs:
 
 Author: Anderson Henrique da Silva
 Created: 2025-10-09 14:18:00 -03 (Minas Gerais, Brazil)
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from .tce_ba import TCEBahiaClient

@@ -3,7 +3,7 @@ Module: services.api_key_service
 Description: Service for API key management and rotation
 Author: Anderson H. Silva
 Date: 2025-01-25
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from datetime import UTC, datetime, timedelta

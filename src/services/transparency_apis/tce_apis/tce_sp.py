@@ -20,7 +20,7 @@ Note: TCE-SP covers 645 municipalities in São Paulo state.
 
 Author: Anderson Henrique da Silva
 Created: 2025-10-09 14:50:00 -03 (Minas Gerais, Brazil)
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from typing import Any

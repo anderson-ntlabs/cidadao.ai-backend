@@ -5,7 +5,7 @@ Provides specific exception types for better error handling and debugging.
 
 Author: Anderson Henrique da Silva
 Created: 2025-10-12
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from typing import Any

@@ -13,7 +13,7 @@ Plus common utilities:
 
 Author: Anderson Henrique da Silva
 Created: 2025-10-12
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 # Clients

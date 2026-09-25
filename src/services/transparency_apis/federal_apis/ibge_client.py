@@ -8,7 +8,7 @@ API Documentation: https://servicodados.ibge.gov.br/api/docs
 
 Author: Anderson Henrique da Silva
 Created: 2025-10-12
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import asyncio

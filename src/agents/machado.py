@@ -3,7 +3,7 @@ Module: agents.machado_agent
 Description: Machado de Assis - Textual Analysis Agent specialized in processing government documents
 Author: Anderson H. Silva
 Date: 2025-01-24
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import hashlib

@@ -3,7 +3,7 @@ Module: core.config
 Description: Application configuration management
 Author: Anderson H. Silva
 Date: 2025-01-24
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import os

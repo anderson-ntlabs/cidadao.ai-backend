@@ -20,7 +20,7 @@ Reports Available:
 
 Author: Anderson Henrique da Silva
 Created: 2025-11-14
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from datetime import datetime

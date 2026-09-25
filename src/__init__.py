@@ -33,7 +33,7 @@ Usage:
 
 Author: Anderson Henrique da Silva
 Email: andersonhs27@gmail.com
-License: Proprietary - All rights reserved
+License: MIT
 Version: 1.0.0
 """
 

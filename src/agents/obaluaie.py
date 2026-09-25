@@ -4,7 +4,7 @@ Codinome: Obaluâiê - Detector de Corrupção
 Description: Agent specialized in detecting systemic corruption patterns and anomalies in government data
 Author: Anderson H. Silva
 Date: 2025-07-23
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from dataclasses import dataclass

@@ -7,7 +7,7 @@ to Zumbi and Anita agents with multi-source data aggregation.
 
 Author: Anderson Henrique da Silva
 Created: 2025-10-09
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import asyncio

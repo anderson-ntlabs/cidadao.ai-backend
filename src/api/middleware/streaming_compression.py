@@ -3,7 +3,7 @@ Module: api.middleware.streaming_compression
 Description: Compression middleware for streaming responses (SSE, WebSocket)
 Author: Anderson H. Silva
 Date: 2025-01-25
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import gzip

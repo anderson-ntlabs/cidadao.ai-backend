@@ -3,7 +3,7 @@ Module: infrastructure.queue.tasks.alert_tasks
 Description: Celery tasks for alert management and notifications
 Author: Anderson H. Silva
 Date: 2025-10-07
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import asyncio

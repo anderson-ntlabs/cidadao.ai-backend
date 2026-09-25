@@ -3,7 +3,7 @@ Module: infrastructure.queue.tasks.auto_investigation_tasks
 Description: Celery tasks for 24/7 automatic investigation system
 Author: Anderson Henrique da Silva
 Date: 2025-10-07 18:11:37
-License: Proprietary - All rights reserved
+License: MIT
 
 These tasks run continuously to monitor government contracts
 and trigger investigations on suspicious patterns.

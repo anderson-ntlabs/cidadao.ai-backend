@@ -3,7 +3,7 @@ Module: tasks.cache_warming_tasks
 Description: Celery tasks for cache warming
 Author: Anderson H. Silva
 Date: 2025-01-25
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from datetime import UTC, datetime

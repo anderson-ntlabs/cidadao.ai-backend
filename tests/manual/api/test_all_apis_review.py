@@ -4,7 +4,7 @@ Tests all implemented transparency APIs to identify issues.
 
 Author: Anderson Henrique da Silva
 Created: 2025-11-14
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import asyncio

@@ -3,7 +3,7 @@ Module: db.session
 Description: Database session management with connection pooling
 Author: Anderson H. Silva
 Date: 2025-01-25
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from collections.abc import AsyncGenerator

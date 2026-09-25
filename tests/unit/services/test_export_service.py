@@ -3,7 +3,7 @@ Module: tests.unit.services.test_export_service
 Description: Unit tests for export service
 Author: Anderson H. Silva
 Date: 2025-01-25
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from datetime import datetime

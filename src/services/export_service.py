@@ -3,7 +3,7 @@ Module: services.export_service
 Description: Document export service for generating PDF, Excel and CSV files
 Author: Anderson H. Silva
 Date: 2025-01-25
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import asyncio

@@ -3,7 +3,7 @@ Module: services.supabase_anomaly_service
 Description: Service for storing and managing anomalies in Supabase
 Author: Anderson H. Silva
 Date: 2025-10-07
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from datetime import datetime

@@ -3,7 +3,7 @@ Module: api.routes.health
 Description: Health check endpoints for monitoring system status
 Author: Anderson H. Silva
 Date: 2025-01-24
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import time

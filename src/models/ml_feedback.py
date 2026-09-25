@@ -3,7 +3,7 @@ Module: models.ml_feedback
 Description: ML Feedback Models - Learning from Investigation Results
 Author: Anderson Henrique da Silva
 Date: 2025-10-07 18:11:37
-License: Proprietary - All rights reserved
+License: MIT
 
 These models store feedback data that can be used to train
 and improve machine learning models for anomaly detection.

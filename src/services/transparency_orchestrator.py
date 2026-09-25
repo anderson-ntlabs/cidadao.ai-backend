@@ -7,7 +7,7 @@ Provides intelligent routing, fallback strategies, and unified data aggregation.
 Author: Anderson Henrique da Silva
 Location: Minas Gerais, Brasil
 Created: 2025-10-16 16:15:00 -03:00
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from datetime import datetime

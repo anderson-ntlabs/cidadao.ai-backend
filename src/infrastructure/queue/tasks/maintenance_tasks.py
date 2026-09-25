@@ -3,7 +3,7 @@ Module: infrastructure.queue.tasks.maintenance_tasks
 Description: Celery tasks for system maintenance
 Author: Anderson H. Silva
 Date: 2025-01-25
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import asyncio

@@ -4,7 +4,7 @@ Codinome: Lampião - Guardião dos Sertões Digitais
 Description: Agent specialized in regional data analysis and geographic insights
 Author: Anderson H. Silva
 Date: 2025-09-25
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import hashlib

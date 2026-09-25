@@ -3,7 +3,7 @@ Module: infrastructure.queue.tasks.analysis_tasks
 Description: Celery tasks for data analysis and pattern detection
 Author: Anderson H. Silva
 Date: 2025-01-25
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import asyncio

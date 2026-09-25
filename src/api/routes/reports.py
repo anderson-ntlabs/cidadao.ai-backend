@@ -3,7 +3,7 @@ Module: api.routes.reports
 Description: Report generation endpoints for creating natural language reports
 Author: Anderson H. Silva
 Date: 2025-01-24
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from datetime import UTC, datetime

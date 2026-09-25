@@ -3,7 +3,7 @@ Module: llm.services
 Description: High-level LLM services for agent integration
 Author: Anderson H. Silva
 Date: 2025-01-24
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from dataclasses import dataclass

@@ -3,7 +3,7 @@ Module: api.middleware.query_tracking
 Description: Middleware to track query patterns for cache warming
 Author: Anderson H. Silva
 Date: 2025-01-25
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import hashlib

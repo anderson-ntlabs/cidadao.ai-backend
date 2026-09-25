@@ -3,7 +3,7 @@ Module: tests.integration.test_basic_api
 Description: Basic integration tests for core API endpoints
 Author: Anderson H. Silva
 Date: 2025-01-24
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 # Import just the FastAPI app without triggering full agent imports

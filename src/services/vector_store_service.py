@@ -3,7 +3,7 @@ Module: services.vector_store_service
 Description: Vector store service for semantic similarity search
 Author: Anderson H. Silva
 Date: 2025-10-20
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import asyncio

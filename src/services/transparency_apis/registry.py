@@ -6,7 +6,7 @@ Provides auto-detection and unified access to federal, state, and TCE APIs.
 
 Author: Anderson Henrique da Silva
 Created: 2025-10-09 14:25:00 -03 (Minas Gerais, Brazil)
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from enum import Enum

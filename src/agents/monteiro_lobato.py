@@ -4,7 +4,7 @@ Codinome: Monteiro Lobato - Educador de Programacao para Criancas
 Description: RAG agent specialized in teaching programming concepts to kids using natural language
 Author: Anderson H. Silva
 Date: 2025-12-09
-License: Proprietary - All rights reserved
+License: MIT
 
 Inherits from BaseKidsAgent for centralized safety features.
 """

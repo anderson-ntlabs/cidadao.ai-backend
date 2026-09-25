@@ -3,7 +3,7 @@ Module: cli.commands.analyze
 Description: Analysis command for CLI - pattern and correlation analysis
 Author: Anderson H. Silva
 Date: 2025-01-25
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import asyncio
