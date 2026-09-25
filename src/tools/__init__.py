@@ -3,7 +3,7 @@ Module: tools
 Description: External API integration tools
 Author: Anderson H. Silva
 Date: 2025-01-24
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from .transparency_api import (

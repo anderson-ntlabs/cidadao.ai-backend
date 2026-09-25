@@ -4,7 +4,7 @@ Codinome: Tiradentes - Avaliador de Riscos
 Description: Agent specialized in generating natural language reports from investigation and analysis results
 Author: Anderson H. Silva
 Date: 2025-01-24
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from dataclasses import dataclass

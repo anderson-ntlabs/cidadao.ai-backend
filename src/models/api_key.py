@@ -3,7 +3,7 @@ Module: models.api_key
 Description: API Key model for client authentication and rotation
 Author: Anderson H. Silva
 Date: 2025-01-25
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import hashlib

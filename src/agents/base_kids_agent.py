@@ -3,7 +3,7 @@ Module: agents.base_kids_agent
 Description: Base class for all kids educational agents with shared safety features
 Author: Anderson H. Silva
 Date: 2025-12-09
-License: Proprietary - All rights reserved
+License: MIT
 
 This module provides:
 - Centralized content safety filtering (BLOCKED_TOPICS)

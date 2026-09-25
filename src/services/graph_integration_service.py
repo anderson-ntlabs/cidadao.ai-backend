@@ -3,7 +3,7 @@ Module: services.graph_integration_service
 Description: Integration service to automatically build graphs from investigations
 Author: Anderson Henrique da Silva
 Date: 2025-10-09
-License: Proprietary - All rights reserved
+License: MIT
 
 This service automatically integrates network graph analysis into investigations.
 """

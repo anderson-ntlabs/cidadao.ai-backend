@@ -3,7 +3,7 @@ Module: tests.unit.agents.test_base_agent
 Description: Comprehensive unit tests for BaseAgent class
 Author: Anderson H. Silva
 Date: 2025-01-24
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import asyncio

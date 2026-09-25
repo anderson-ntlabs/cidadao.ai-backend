@@ -1,15 +1,21 @@
 # Cidadao.AI Backend
 
-> ## ⚠️ Repositório descontinuado
+> ## 👋 Bem-vindo, pessoal do BBSIA
 >
-> O Cidadão.AI segue ativo, mas **não é mais desenvolvido aqui**.
-> A plataforma vive em **https://cidadao.ntlabs.dev**.
+> Este repositório é a versão aberta (licença MIT) do Cidadão.AI descrita no
+> artigo do SBSI 2026
+> ([DOI 10.5753/sbsi_estendido.2026.249058](https://doi.org/10.5753/sbsi_estendido.2026.249058)).
+> Os agentes submetidos ao [Banco Brasileiro de Soluções de IA](https://bancobrasileiro.ia.br/)
+> estão em [`src/agents/`](src/agents/):
 >
-> Este repositório permanece público e arquivado como **referência histórica do
-> artigo publicado no SBSI 2026**
-> ([DOI 10.5753/sbsi_estendido.2026.249058](https://doi.org/10.5753/sbsi_estendido.2026.249058)),
-> que descreve a versão aqui contida. O código atual não está mais neste espelho —
-> issues e pull requests não serão respondidos.
+> - **Zumbi dos Palmares**: detecção de anomalias em contratos e despesas ([`zumbi.py`](src/agents/zumbi.py))
+> - **Marechal Deodoro**: base comum de todos os agentes ([`deodoro.py`](src/agents/deodoro.py))
+> - **Abaporu**: orquestração das investigações ([`abaporu.py`](src/agents/abaporu.py))
+> - **Carlos Drummond de Andrade**: comunicação em linguagem simples ([`drummond.py`](src/agents/drummond.py))
+>
+> A plataforma segue ativa em **https://cidadao.ntlabs.dev** e evolui fora deste
+> espelho. Para reuso, adaptação ou parceria, fale direto com
+> **anderson@ntlabs.dev**: issues e pull requests aqui não são acompanhados.
 
 **Autor**: Anderson Henrique da Silva
 **Localização**: Minas Gerais, Brasil

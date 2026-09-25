@@ -4,7 +4,7 @@ Codinome: Alberto Santos-Dumont - Inventor e Educador do Sistema
 Description: Agent specialized in teaching interns about the Cidadão.AI system
 Author: Anderson H. Silva
 Date: 2025-12-06
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from enum import Enum

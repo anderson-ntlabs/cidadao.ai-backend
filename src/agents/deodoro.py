@@ -4,7 +4,7 @@ Codinome: Deodoro da Fonseca - Fundador da Arquitetura Multi-Agente
 Description: Base agent class for all Cidadão.AI agents
 Author: Anderson H. Silva
 Date: 2025-01-24
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from abc import ABC, abstractmethod

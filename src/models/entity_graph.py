@@ -3,7 +3,7 @@ Module: models.entity_graph
 Description: Entity relationship graph models for cross-investigation analysis
 Author: Anderson Henrique da Silva
 Date: 2025-10-09
-License: Proprietary - All rights reserved
+License: MIT
 
 This module defines the graph database structure for tracking relationships
 between companies, people, and government agencies across multiple investigations.

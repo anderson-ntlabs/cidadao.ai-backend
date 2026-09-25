@@ -3,7 +3,7 @@ Module: models.forensic_investigation
 Description: Forensic Investigation Models - Ultra-detailed investigation data structures
 Author: Anderson Henrique da Silva
 Date: 2025-10-07 17:59:00
-License: Proprietary - All rights reserved
+License: MIT
 
 This module defines comprehensive data models for storing detailed forensic
 evidence, legal references, and documentary proof for government transparency.

@@ -3,7 +3,7 @@ Module: api.routes.tasks
 Description: API endpoints for manually triggering Celery tasks
 Author: Anderson H. Silva
 Date: 2025-10-07
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from typing import Any

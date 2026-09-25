@@ -3,7 +3,7 @@ Module: infrastructure.queue.tasks.memory_tasks
 Description: Celery tasks for Nanã memory management
 Author: Anderson H. Silva
 Date: 2025-10-20
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from datetime import UTC, datetime, timedelta

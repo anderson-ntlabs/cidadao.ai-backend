@@ -3,7 +3,7 @@ Test all 6 TCE APIs to identify working endpoints
 
 Author: Anderson Henrique da Silva
 Created: 2025-11-14
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import asyncio

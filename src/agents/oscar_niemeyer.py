@@ -4,7 +4,7 @@ Codinome: Oscar Niemeyer - Arquiteto de Dados
 Description: Agent specialized in data aggregation and visualization metadata generation
 Author: Anderson H. Silva
 Date: 2025-09-25
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from dataclasses import dataclass

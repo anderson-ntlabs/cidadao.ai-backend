@@ -18,7 +18,7 @@ Previous API (https://api.tce.ce.gov.br/sim/1_0/) is deprecated
 
 Author: Anderson Henrique da Silva
 Created: 2025-10-09 14:27:00 -03 (Minas Gerais, Brazil)
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from typing import Any

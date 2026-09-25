@@ -5,7 +5,7 @@ Tests the exception hierarchy, context preservation, and factory methods.
 
 Author: Anderson Henrique da Silva
 Created: 2025-10-12 15:53:52 -03
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from src.services.transparency_apis.federal_apis.exceptions import (

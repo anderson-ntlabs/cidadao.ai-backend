@@ -3,7 +3,7 @@ Module: api.routes.export
 Description: Export endpoints for downloading investigations, reports and data
 Author: Anderson H. Silva
 Date: 2025-01-25
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from datetime import UTC, datetime

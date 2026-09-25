@@ -3,7 +3,7 @@ Module: api.middleware.cors_enhanced
 Description: Enhanced CORS middleware for Vercel frontend integration
 Author: Anderson H. Silva
 Date: 2025-01-25
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import re

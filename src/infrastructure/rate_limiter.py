@@ -3,7 +3,7 @@ Module: infrastructure.rate_limiter
 Description: Advanced rate limiting system with multiple strategies
 Author: Anderson H. Silva
 Date: 2025-01-25
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import time

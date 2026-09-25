@@ -3,7 +3,7 @@ Module: services.maritaca_client
 Description: Maritaca AI/Sabiá-3 API client for Brazilian Portuguese language models
 Author: Anderson H. Silva
 Date: 2025-01-19
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import asyncio

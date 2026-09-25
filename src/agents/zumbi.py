@@ -4,7 +4,7 @@ Codinome: Zumbi - Investigador de Padrões
 Description: Agent specialized in detecting anomalies and suspicious patterns in government data
 Author: Anderson H. Silva
 Date: 2025-01-24
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import time

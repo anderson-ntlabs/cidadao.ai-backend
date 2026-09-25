@@ -4,7 +4,7 @@ Codinome: Carlos Drummond de Andrade - Comunicador do Povo
 Description: Agent specialized in multi-channel communication and natural language generation
 Author: Anderson H. Silva
 Date: 2025-07-23
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from dataclasses import dataclass

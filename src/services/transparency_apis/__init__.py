@@ -13,7 +13,7 @@ Supported sources:
 
 Author: Anderson Henrique da Silva
 Created: 2025-10-09 14:15:27 -03 (Minas Gerais, Brazil)
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from .agent_integration import TransparencyDataCollector, get_transparency_collector

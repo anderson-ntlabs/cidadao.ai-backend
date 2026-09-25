@@ -21,7 +21,7 @@ Note: TCE-BA covers 417 municipalities in Bahia state.
 
 Author: Anderson Henrique da Silva
 Created: 2025-10-09 15:00:00 -03 (Minas Gerais, Brazil)
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from typing import Any

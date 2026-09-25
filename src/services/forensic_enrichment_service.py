@@ -3,7 +3,7 @@ Module: services.forensic_enrichment_service
 Description: Forensic Data Enrichment Service
 Author: Anderson Henrique da Silva
 Date: 2025-10-07 17:59:00
-License: Proprietary - All rights reserved
+License: MIT
 
 This service enriches investigation results with detailed evidence, documentation,
 legal references, and actionable intelligence.

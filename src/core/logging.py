@@ -3,7 +3,7 @@ Module: core.logging
 Description: Structured logging configuration
 Author: Anderson H. Silva
 Date: 2025-01-24
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import logging

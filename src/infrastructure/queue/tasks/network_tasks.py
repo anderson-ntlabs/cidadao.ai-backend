@@ -3,7 +3,7 @@ Module: infrastructure.queue.tasks.network_tasks
 Description: Celery tasks for network graph analysis and suspicious pattern detection
 Author: Anderson Henrique da Silva
 Date: 2025-10-09
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from datetime import datetime, timedelta

@@ -3,7 +3,7 @@ Module: core.oauth_config
 Description: OAuth2 configuration for multiple providers
 Author: Anderson H. Silva
 Date: 2025-01-15
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from enum import Enum

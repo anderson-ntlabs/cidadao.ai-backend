@@ -3,7 +3,7 @@ Module: infrastructure.queue.celery_app
 Description: Celery application configuration and task definitions
 Author: Anderson H. Silva
 Date: 2025-01-25
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from datetime import datetime, timedelta

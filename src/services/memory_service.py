@@ -3,7 +3,7 @@ Module: services.memory_service
 Description: Memory service factory for Nanã agent with vector store and Redis
 Author: Anderson H. Silva
 Date: 2025-10-20
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import structlog

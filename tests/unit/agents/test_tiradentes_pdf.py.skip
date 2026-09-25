@@ -3,7 +3,7 @@ Module: tests.unit.agents.test_tiradentes_pdf
 Description: Unit tests for Tiradentes PDF generation functionality
 Author: Anderson H. Silva
 Date: 2025-01-25
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import base64

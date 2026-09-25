@@ -3,7 +3,7 @@ Module: api.routes.admin.ip_whitelist
 Description: Admin routes for managing IP whitelist
 Author: Anderson H. Silva
 Date: 2025-01-25
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import ipaddress

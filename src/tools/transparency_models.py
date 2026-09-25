@@ -3,7 +3,7 @@ Module: tools.transparency_models
 Description: Data models for Portal da Transparência API responses
 Author: Anderson H. Silva
 Date: 2025-01-24
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from datetime import date, datetime

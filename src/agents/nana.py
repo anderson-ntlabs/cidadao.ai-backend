@@ -4,7 +4,7 @@ Codinome: Nanã - Agente Temporal
 Description: Agent responsible for managing episodic and semantic memory
 Author: Anderson H. Silva
 Date: 2025-01-24
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from datetime import UTC, datetime, timedelta

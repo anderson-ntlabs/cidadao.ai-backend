@@ -4,7 +4,7 @@ Tests all SICONFI endpoints with major Minas Gerais cities.
 
 Author: Anderson Henrique da Silva
 Created: 2025-11-14
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import asyncio

@@ -3,7 +3,7 @@ Module: api.middleware.authentication
 Description: Authentication middleware for API endpoints
 Author: Anderson H. Silva
 Date: 2025-01-24
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from datetime import UTC, datetime, timedelta

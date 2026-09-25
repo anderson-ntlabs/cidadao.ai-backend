@@ -6,7 +6,7 @@ Ensures data quality, format consistency, and detects anomalies in fiscal data.
 
 Author: Anderson Henrique da Silva
 Created: 2025-10-09 15:10:00 -03 (Minas Gerais, Brazil)
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import re

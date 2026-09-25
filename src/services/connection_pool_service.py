@@ -3,7 +3,7 @@ Module: services.connection_pool_service
 Description: Advanced connection pooling management
 Author: Anderson H. Silva
 Date: 2025-01-25
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import time

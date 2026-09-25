@@ -3,7 +3,7 @@ Module: api.routes.admin.compression
 Description: Admin routes for compression monitoring and configuration
 Author: Anderson H. Silva
 Date: 2025-01-25
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from fastapi import APIRouter, Depends, HTTPException, status

@@ -3,7 +3,7 @@ Module: tests.test_infrastructure.test_retry_policy
 Description: Tests for retry policies and circuit breaker
 Author: Anderson H. Silva
 Date: 2025-01-25
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import asyncio

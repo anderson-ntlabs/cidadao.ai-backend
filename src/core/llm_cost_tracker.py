@@ -3,7 +3,7 @@ Module: core.llm_cost_tracker
 Description: LLM usage cost tracking and monitoring
 Author: Anderson H. Silva
 Date: 2025-01-24
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import asyncio

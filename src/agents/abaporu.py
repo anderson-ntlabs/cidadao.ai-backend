@@ -15,7 +15,7 @@ the most appropriate specialized agents for each investigation.
 
 Author: Anderson H. Silva
 Date: 2025-01-24
-License: Proprietary - All rights reserved
+License: MIT
 
 Example:
     >>> from src.agents.abaporu import MasterAgent

@@ -4,7 +4,7 @@ Codinome: Ceuci - Agente Preditivo
 Description: Agent specialized in predictive analysis and trend modeling for government data
 Author: Anderson H. Silva
 Date: 2025-07-23
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from dataclasses import dataclass

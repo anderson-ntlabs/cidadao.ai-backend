@@ -3,7 +3,7 @@ Module: services.katana_service
 Description: Integration with Katana Scan API for dispensas de licitação
 Author: Anderson H. Silva
 Date: 2025-10-07
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from datetime import datetime

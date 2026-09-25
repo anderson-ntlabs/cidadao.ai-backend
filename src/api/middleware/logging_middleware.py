@@ -3,7 +3,7 @@ Module: api.middleware.logging_middleware
 Description: Logging middleware for API request/response tracking
 Author: Anderson H. Silva
 Date: 2025-01-24
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import time

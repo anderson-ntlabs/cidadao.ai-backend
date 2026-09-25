@@ -3,7 +3,7 @@ Module: api.middleware.security
 Description: Advanced security middleware for comprehensive protection
 Author: Anderson H. Silva
 Date: 2025-01-15
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import hashlib

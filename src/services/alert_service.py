@@ -3,7 +3,7 @@ Module: services.alert_service
 Description: Service for sending alerts about detected anomalies
 Author: Anderson H. Silva
 Date: 2025-10-07
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from datetime import datetime

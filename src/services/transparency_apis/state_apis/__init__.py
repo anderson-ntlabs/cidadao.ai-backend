@@ -13,7 +13,7 @@ Supported states:
 
 Author: Anderson Henrique da Silva
 Created: 2025-10-09 14:17:30 -03 (Minas Gerais, Brazil)
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from .ckan_client import CKANClient

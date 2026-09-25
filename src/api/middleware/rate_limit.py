@@ -3,7 +3,7 @@ Module: api.middleware.rate_limit
 Description: Rate limiting middleware for API endpoints
 Author: Anderson H. Silva
 Date: 2025-01-25
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from fastapi import Request, status

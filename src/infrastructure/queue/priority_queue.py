@@ -3,7 +3,7 @@ Module: infrastructure.queue.priority_queue
 Description: Priority queue system for task management
 Author: Anderson H. Silva
 Date: 2025-01-25
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import asyncio

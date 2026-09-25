@@ -3,7 +3,7 @@ Module: tests.unit.api.routes.test_export
 Description: Unit tests for export routes
 Author: Anderson H. Silva
 Date: 2025-01-25
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from unittest.mock import AsyncMock, patch

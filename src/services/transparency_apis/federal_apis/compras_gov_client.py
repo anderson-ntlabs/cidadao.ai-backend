@@ -9,7 +9,7 @@ Base URL: http://compras.dados.gov.br
 
 Author: Anderson Henrique da Silva
 Created: 2025-10-14
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import hashlib

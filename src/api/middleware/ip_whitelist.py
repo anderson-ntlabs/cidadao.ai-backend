@@ -3,7 +3,7 @@ Module: api.middleware.ip_whitelist
 Description: IP whitelist middleware for production environments
 Author: Anderson H. Silva
 Date: 2025-01-25
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 import ipaddress

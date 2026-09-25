@@ -20,7 +20,7 @@ Note: HTTP 200 always returned (error in body if request fails)
 
 Author: Anderson Henrique da Silva
 Created: 2025-10-09 14:23:00 -03 (Minas Gerais, Brazil)
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from typing import Any

@@ -3,7 +3,7 @@ Module: llm
 Description: Large Language Model integrations and utilities
 Author: Anderson H. Silva
 Date: 2025-01-24
-License: Proprietary - All rights reserved
+License: MIT
 """
 
 from .providers import (
