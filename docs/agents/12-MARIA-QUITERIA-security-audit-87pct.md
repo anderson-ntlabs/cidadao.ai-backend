@@ -601,4 +601,4 @@ Para completar os 5% restantes:
 **Autor**: Anderson Henrique da Silva
 **Manutenção**: Ativa
 **Versão**: 0.95 (Beta)
-**License**: Proprietary
+**License**: MIT

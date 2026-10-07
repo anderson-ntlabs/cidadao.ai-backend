@@ -244,7 +244,7 @@ Special thanks to all contributors who made this release possible.
 
 ## 📄 License
 
-Proprietary - All rights reserved
+MIT License. See LICENSE in the repository root.
 © 2025 Cidadão.AI
 
 ---

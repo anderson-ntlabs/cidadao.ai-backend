@@ -3,7 +3,7 @@
 **Author**: Anderson Henrique da Silva
 **Location**: Minas Gerais, Brazil
 **Created**: 2025-08-13
-**Last Updated**: 2026-09-25
+**Last Updated**: 2026-10-07
 
 ---
 
@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **CI installs greenlet again**: SQLAlchemy 2.1.0 stopped pulling `greenlet` in by default, so `tests/conftest.py` failed to import the asyncio engine; `pyproject.toml` and `requirements.txt` now ask for `sqlalchemy[asyncio]`
 
 ### Changed
+- **The last "Proprietary" markers now say MIT** (24 files): the OpenAPI `license_info` (and its link, now this repo's `LICENSE`), `__license__`, `APP_LICENSE`, two remaining module headers and the agent docs. After this, nothing in the repository contradicts `LICENSE`, which the Digital Public Goods Alliance checks (indicator 2).
 - **Module headers now declare the MIT license** (164 files in `src/` and `tests/`): they said "Proprietary - All rights reserved", contradicting `LICENSE`, which has always been MIT
 - **README opens with a welcome for BBSIA reviewers** instead of the discontinuation notice, pointing to the four agents submitted to the Banco Brasileiro de Soluções de IA (Enap/LIIA); the mirror status and the contact channel stay stated
 

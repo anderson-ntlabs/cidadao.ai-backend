@@ -305,4 +305,4 @@ O agente pode ensinar conceitos basicos de design de interface:
 
 - **Data**: 2025-12-09
 - **Autor**: Anderson H. Silva
-- **Licenca**: Proprietary - All rights reserved
+- **Licença**: MIT

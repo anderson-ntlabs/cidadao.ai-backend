@@ -522,4 +522,4 @@ senna.add_routing_rule(
 **Autor**: Anderson Henrique da Silva
 **Manutenção**: Ativa
 **Versão**: 1.0 (Produção)
-**License**: Proprietary
+**License**: MIT

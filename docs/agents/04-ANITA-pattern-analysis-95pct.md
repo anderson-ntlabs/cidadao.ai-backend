@@ -853,4 +853,4 @@ ANITA_PARALLEL_ANALYSES=true      # Executar em paralelo
 **Autor**: Anderson Henrique da Silva
 **Manutenção**: Ativa
 **Versão**: 1.0 (Produção)
-**License**: Proprietary
+**License**: MIT

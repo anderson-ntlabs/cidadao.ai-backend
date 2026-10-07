@@ -270,4 +270,4 @@ Fallback para respostas pre-definidas quando o servico nao esta disponivel.
 
 - **Data**: 2025-12-09
 - **Autor**: Anderson H. Silva
-- **Licenca**: Proprietary - All rights reserved
+- **Licença**: MIT

@@ -195,7 +195,7 @@ indent_style = tab
 [![Test Coverage](https://img.shields.io/badge/coverage-76%25-yellow)](./htmlcov/index.html)
 [![Python Version](https://img.shields.io/badge/python-3.11%2B-blue)](https://www.python.org/)
 [![API Status](https://img.shields.io/badge/API-22%25%20working-orange)](./docs/api-status/)
-[![License](https://img.shields.io/badge/license-Proprietary-red)](./LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
 [![Railway Deploy](https://img.shields.io/badge/deploy-railway-purple)](https://railway.app)
 
 🏛️ Multi-agent AI system for Brazilian government transparency analysis

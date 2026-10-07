@@ -3,7 +3,7 @@ Investigate TCE-MG API endpoints by analyzing the portal.
 
 Author: Anderson Henrique da Silva
 Created: 2025-11-14
-License: Proprietary - All rights reserved
+License: MIT (see LICENSE)
 """
 
 import re

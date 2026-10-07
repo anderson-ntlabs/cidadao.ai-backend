@@ -952,6 +952,6 @@ Para completar os 10% restantes:
 **Autor**: Anderson Henrique da Silva
 **Manutenção**: Ativa
 **Versão**: 0.80 (Beta - Sprint 6 Enhanced)
-**License**: Proprietary
+**License**: MIT
 **Sprint**: Sprint 6 Phase 2 - October 2025
 **Dependencies Added**: networkx, plotly, kaleido

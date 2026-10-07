@@ -267,5 +267,5 @@ for api in pe_apis:
 
 ## 📝 Licença
 
-Proprietary - All rights reserved
+MIT License. See LICENSE in the repository root.
 © 2025 Anderson Henrique da Silva

@@ -6,7 +6,7 @@ Applies SQL migrations from migrations/supabase/ directory to the Supabase datab
 
 Author: Anderson Henrique da Silva
 Created: 2025-10-09
-License: Proprietary - All rights reserved
+License: MIT (see LICENSE)
 """
 
 import asyncio
