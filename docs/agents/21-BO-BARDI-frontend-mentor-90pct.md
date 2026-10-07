@@ -381,4 +381,4 @@ if _DSPY_AVAILABLE and _dspy_service:
 
 - **Data**: 2025-12-06
 - **Autor**: Anderson H. Silva
-- **Licenca**: Proprietary - All rights reserved
+- **Licença**: MIT

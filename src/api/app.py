@@ -213,8 +213,8 @@ app = FastAPI(
         "email": "andersonhs27@gmail.com",
     },
     license_info={
-        "name": "Proprietary",
-        "url": "https://github.com/anderson-ntlabs/cidadao.ai/blob/main/LICENSE",
+        "name": "MIT",
+        "url": "https://github.com/anderson-ntlabs/cidadao.ai-backend/blob/main/LICENSE",
     },
     terms_of_service="https://github.com/anderson-ntlabs/cidadao.ai/blob/main/TERMS.md",
     lifespan=lifespan,

@@ -921,4 +921,4 @@ REPORT_TEMPLATE_DIR=/app/templates/reports
 **Autor**: Anderson Henrique da Silva
 **Manutenção**: Ativa
 **Versão**: 1.0 (Produção)
-**License**: Proprietary
+**License**: MIT

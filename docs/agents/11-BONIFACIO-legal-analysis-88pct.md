@@ -854,4 +854,4 @@ priority_sources = ["Portal da Transparência", "IBGE", "DataSUS"]
 **Autor**: Anderson Henrique da Silva
 **Manutenção**: Ativa
 **Versão**: 1.0 (Produção)
-**License**: Proprietary
+**License**: MIT

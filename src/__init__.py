@@ -41,7 +41,7 @@ Version: 1.0.0
 __version__ = "1.0.0"
 __author__ = "Anderson Henrique da Silva"
 __email__ = "andersonhs27@gmail.com"
-__license__ = "Proprietary - All rights reserved"
+__license__ = "MIT"
 __description__ = "Sistema multi-agente de IA para transparência pública brasileira"
 
 # Key exports for external usage

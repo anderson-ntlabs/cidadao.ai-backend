@@ -324,4 +324,4 @@ O agente usa frases inspiradas:
 
 - **Data**: 2025-12-06
 - **Autor**: Anderson H. Silva
-- **Licenca**: Proprietary - All rights reserved
+- **Licença**: MIT

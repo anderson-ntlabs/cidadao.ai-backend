@@ -16,7 +16,7 @@ APP_DESCRIPTION: Final[str] = (
 )
 APP_VERSION: Final[str] = "1.0.0"
 APP_AUTHOR: Final[str] = "Anderson H. Silva"
-APP_LICENSE: Final[str] = "Proprietary - All rights reserved"
+APP_LICENSE: Final[str] = "MIT"
 
 # API versioning
 API_V1_PREFIX: Final[str] = "/api/v1"

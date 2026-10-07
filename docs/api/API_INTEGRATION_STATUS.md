@@ -328,7 +328,7 @@ Base URL: {URL base}
 
 Author: Anderson Henrique da Silva
 Created: {Data}
-License: Proprietary - All rights reserved
+License: MIT (see LICENSE)
 """
 
 import hashlib

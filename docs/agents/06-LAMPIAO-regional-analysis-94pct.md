@@ -606,5 +606,5 @@ Para completar os 5% restantes:
 **Autor**: Anderson Henrique da Silva
 **Manutenção**: Ativa
 **Versão**: 1.0.0 (Production)
-**License**: Proprietary
+**License**: MIT
 **Sprint**: Sprint 6 Phase 1 - October 2025

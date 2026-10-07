@@ -909,4 +909,4 @@ VECTOR_STORE_API_KEY=sua-chave
 **Autor**: Anderson Henrique da Silva
 **Manutenção**: Ativa
 **Versão**: 1.0 (Produção)
-**License**: Proprietary
+**License**: MIT

@@ -430,6 +430,6 @@ environment:
 
 ## License
 
-Proprietary - All rights reserved
+MIT License. See LICENSE in the repository root.
 Author: Anderson Henrique da Silva
 Created: 2025-10-12
