@@ -4,6 +4,7 @@ Script to generate secure secrets for Cidadão.AI
 Generates cryptographically secure random secrets for production use
 """
 
+import datetime
 import os
 import secrets
 import string
@@ -47,7 +48,7 @@ def create_env_file(output_path: str, deployment: bool = False):
 
     if deployment:
         # Deployment-specific .env
-        content = f"""# Generated secrets for Docker Compose - {pd.datetime.now().isoformat()}
+        content = f"""# Generated secrets for Docker Compose - {datetime.datetime.now().isoformat()}
 # KEEP THIS FILE SECURE - DO NOT COMMIT TO VERSION CONTROL
 
 # PostgreSQL Configuration
@@ -70,7 +71,7 @@ REDIS_PASSWORD={secrets_data['REDIS_PASSWORD']}
 """
     else:
         # Application .env
-        content = f"""# Generated secrets for Cidadao.AI - {pd.datetime.now().isoformat()}
+        content = f"""# Generated secrets for Cidadao.AI - {datetime.datetime.now().isoformat()}
 # KEEP THIS FILE SECURE - DO NOT COMMIT TO VERSION CONTROL
 
 # Application Configuration
