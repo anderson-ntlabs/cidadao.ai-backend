@@ -9,7 +9,11 @@ from typing import Any
 
 from src.core import get_logger
 from src.core.config import settings
-from src.services.maritaca_client import MaritacaClient, MaritacaModel
+from src.services.maritaca_client import (
+    MaritacaClient,
+    MaritacaModel,
+    create_ollama_chat_client,
+)
 from src.services.portal_transparencia_service import portal_transparencia
 
 logger = get_logger(__name__)
@@ -26,6 +30,10 @@ class ChatDataIntegration:
 
     def _init_ai_client(self):
         """Initialize AI client for data interpretation."""
+        self.ai_client = create_ollama_chat_client()
+        if self.ai_client:
+            return
+
         api_key = getattr(settings, "maritaca_api_key", None)
         if api_key:
             api_key_value = (

@@ -1295,7 +1295,10 @@ async def process_abaporu_request(
         from src.agents import NanaAgent
         from src.core.cache import get_redis_client
         from src.core.config import settings
-        from src.services.maritaca_client import MaritacaClient
+        from src.services.maritaca_client import (
+            MaritacaClient,
+            create_ollama_chat_client,
+        )
         from src.services.simple_vector_store import SimpleVectorStore
 
         # Create dependencies for Abaporu (master orchestrator)
@@ -1304,7 +1307,7 @@ async def process_abaporu_request(
             if settings.maritaca_api_key
             else None
         )
-        maritaca_client = (
+        maritaca_client = create_ollama_chat_client() or (
             MaritacaClient(api_key=api_key) if api_key else MaritacaClient()
         )
 
@@ -1409,7 +1412,10 @@ async def process_ayrton_senna_request(
 
         # Initialize Ayrton Senna agent with required dependencies
         from src.core.config import settings
-        from src.services.maritaca_client import MaritacaClient
+        from src.services.maritaca_client import (
+            MaritacaClient,
+            create_ollama_chat_client,
+        )
 
         # Create LLM service for Senna (semantic router) with API key
         api_key = (
@@ -1417,7 +1423,9 @@ async def process_ayrton_senna_request(
             if settings.maritaca_api_key
             else None
         )
-        llm_service = MaritacaClient(api_key=api_key) if api_key else MaritacaClient()
+        llm_service = create_ollama_chat_client() or (
+            MaritacaClient(api_key=api_key) if api_key else MaritacaClient()
+        )
 
         ayrton_senna = AyrtonSennaAgent(llm_service=llm_service)
 

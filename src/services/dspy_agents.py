@@ -451,6 +451,10 @@ class DSPyAgentService:
             self.lm = None
             return
 
+        if (settings.llm_provider or "").lower() == "ollama":
+            self._configure_ollama_llm()
+            return
+
         # Get API key from settings (it's a SecretStr)
         api_key_secret = settings.maritaca_api_key
         api_key = api_key_secret.get_secret_value() if api_key_secret else None
@@ -475,6 +479,26 @@ class DSPyAgentService:
 
         except Exception as e:
             logger.error(f"Failed to configure DSPy with Maritaca: {e}")
+            logger.error(f"Traceback: {traceback.format_exc()}")
+            self.lm = None
+
+    def _configure_ollama_llm(self) -> None:
+        """Configure DSPy with a self-hosted Ollama model (LLM_PROVIDER=ollama)."""
+        try:
+            # Ollama serves an OpenAI-compatible API. LiteLLM's openai/ route
+            # requires some api_key value; Ollama ignores it.
+            self.lm = dspy.LM(
+                model=f"openai/{settings.ollama_model}",
+                api_key="ollama",
+                api_base=settings.ollama_base_url,
+                temperature=0.7,
+                max_tokens=1024,
+            )
+            dspy.configure(lm=self.lm)
+            logger.info(f"DSPy configured with Ollama LLM ({settings.ollama_model})")
+
+        except Exception as e:
+            logger.error(f"Failed to configure DSPy with Ollama: {e}")
             logger.error(f"Traceback: {traceback.format_exc()}")
             self.lm = None
 

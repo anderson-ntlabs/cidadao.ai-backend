@@ -102,7 +102,10 @@ class Settings(BaseSettings):
     # LLM Configuration
     llm_provider: str = Field(
         default="maritaca",
-        description="LLM provider (maritaca, anthropic, groq, together, huggingface)",
+        description=(
+            "LLM provider (maritaca, anthropic, groq, together, huggingface, "
+            "ollama for a self-hosted open model)"
+        ),
     )
     llm_model_name: str = Field(
         default="sabia-4",
@@ -143,6 +146,16 @@ class Settings(BaseSettings):
     maritaca_model: str = Field(
         default="sabia-4",
         description="Default Maritaca AI model (sabia-4 latest/recommended, sabiazinho-4 for speed)",
+    )
+
+    # Ollama Configuration (self-hosted, OpenAI-compatible, no API key)
+    ollama_base_url: str = Field(
+        default="http://localhost:11434/v1",
+        description="Ollama OpenAI-compatible base URL (include the /v1 suffix)",
+    )
+    ollama_model: str = Field(
+        default="qwen2.5:7b",
+        description="Ollama model tag, pulled with `ollama pull <tag>`",
     )
 
     # Anthropic Claude Configuration

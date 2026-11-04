@@ -1518,7 +1518,11 @@ async def send_message(
             "model_used": (
                 settings.maritaca_model
                 if settings.llm_provider == "maritaca"
-                else settings.anthropic_model
+                else (
+                    settings.ollama_model
+                    if settings.llm_provider == "ollama"
+                    else settings.anthropic_model
+                )
             ),
             "tokens_used": (
                 response.metadata.get("tokens_used", 0)

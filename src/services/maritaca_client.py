@@ -607,3 +607,34 @@ def create_maritaca_client(
         Configured MaritacaClient instance
     """
     return MaritacaClient(api_key=api_key, model=model, **kwargs)
+
+
+def create_ollama_chat_client(timeout: int = 120, **kwargs) -> MaritacaClient | None:
+    """
+    Build a chat client for the self-hosted Ollama server, if it is selected.
+
+    Several agents take a ``MaritacaClient`` directly. Its wire format is the
+    OpenAI chat-completions shape, which Ollama also serves, so the same client
+    pointed at ``OLLAMA_BASE_URL`` lets those agents run on a local open model.
+    Ollama ignores the bearer token, so a placeholder is sent.
+
+    Args:
+        timeout: Request timeout in seconds (local inference is slower)
+        **kwargs: Additional MaritacaClient options
+
+    Returns:
+        A client bound to Ollama when ``LLM_PROVIDER=ollama``, otherwise None,
+        so callers keep their existing Maritaca setup.
+    """
+    from src.core.config import settings
+
+    if (settings.llm_provider or "").lower() != "ollama":
+        return None
+
+    return MaritacaClient(
+        api_key="ollama",
+        base_url=settings.ollama_base_url,
+        model=settings.ollama_model,
+        timeout=timeout,
+        **kwargs,
+    )
