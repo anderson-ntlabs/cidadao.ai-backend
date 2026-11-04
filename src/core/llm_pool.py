@@ -74,27 +74,43 @@ class LLMConnectionPool:
             "cache_hits": 0,
         }
 
+    @staticmethod
+    def _secret(value: Any) -> str:
+        """Return the plain value of a key that may be a pydantic SecretStr.
+
+        Formatting a SecretStr directly yields its masked form ("**********"),
+        which made every pooled Groq request fail with 401.
+        """
+        if value is None:
+            return ""
+        getter = getattr(value, "get_secret_value", None)
+        return getter() if callable(getter) else str(value)
+
     async def initialize(self):
         """Initialize connection pools for configured providers."""
+        groq_key = self._secret(getattr(settings, "groq_api_key", None))
+        openai_key = self._secret(getattr(settings, "openai_api_key", None))
         providers = {
             "groq": {
                 "base_url": "https://api.groq.com/openai/v1",
                 "headers": {
-                    "Authorization": f"Bearer {settings.groq_api_key}",
+                    "Authorization": f"Bearer {groq_key}",
                     "Content-Type": "application/json",
                 },
             },
             "openai": {
                 "base_url": "https://api.openai.com/v1",
                 "headers": {
-                    "Authorization": f"Bearer {getattr(settings, 'openai_api_key', '')}",
+                    "Authorization": f"Bearer {openai_key}",
                     "Content-Type": "application/json",
                 },
             },
         }
 
         for provider, config in providers.items():
-            if provider == "openai" and not getattr(settings, "openai_api_key", None):
+            if provider == "groq" and not groq_key:
+                continue  # Skip if no API key
+            if provider == "openai" and not openai_key:
                 continue  # Skip if no API key
 
             await self._create_pool(provider, config)

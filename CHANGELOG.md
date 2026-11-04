@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Self-hosting with open components only** (DPGA indicator 4, platform independence): an `OllamaProvider` (`LLM_PROVIDER=ollama`, settings `OLLAMA_BASE_URL` and `OLLAMA_MODEL`, default `qwen2.5:7b`) that also drives the DSPy chat path and the agents holding a chat client directly (Drummond, Abaporu, Ayrton Senna, chat data integration), a root `docker-compose.yml` with API, PostgreSQL, Redis and Ollama, and `docs/self-hosting.md` listing the paths that still require Maritaca. With Ollama as primary, the LLM manager no longer falls back to hosted APIs unless asked to. The Dockerfile no longer copies root `*.py` files, which do not exist and made the classic builder fail.
 
 ### Fixed
+- **Pooled Groq requests send the real API key**: the connection pool formatted the `SecretStr` directly, so it sent the masked `**********` and every pooled call got 401 before falling back to the direct client. The key is now unwrapped, and providers without a key are skipped.
 - **CI installs greenlet again**: SQLAlchemy 2.1.0 stopped pulling `greenlet` in by default, so `tests/conftest.py` failed to import the asyncio engine; `pyproject.toml` and `requirements.txt` now ask for `sqlalchemy[asyncio]`
 
 ### Changed
