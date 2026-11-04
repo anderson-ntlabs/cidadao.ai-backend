@@ -1,6 +1,7 @@
 """
 Module: llm.providers
-Description: LLM provider integrations for Groq, Together AI, and Hugging Face
+Description: LLM provider integrations for Groq, Together AI, Hugging Face,
+    Maritaca AI and self-hosted Ollama
 Author: Anderson H. Silva
 Date: 2025-01-24
 License: MIT
@@ -31,6 +32,7 @@ class LLMProvider(str, Enum):
     TOGETHER = "together"
     HUGGINGFACE = "huggingface"
     MARITACA = "maritaca"
+    OLLAMA = "ollama"
 
 
 @dataclass
@@ -759,6 +761,98 @@ class MaritacaProvider(BaseLLMProvider):
         pass
 
 
+class OllamaProvider(BaseLLMProvider):
+    """
+    Self-hosted provider backed by an Ollama server.
+
+    Ollama serves an OpenAI-compatible API at ``<base>/v1/chat/completions``,
+    so the request and response shapes match Groq and Together. It needs no
+    API key and runs entirely on infrastructure the operator controls.
+
+    It deliberately has no ``_provider_name``: the shared connection pool only
+    holds clients for hosted APIs, so requests go straight to the direct
+    client instead of failing over from the pool on every call.
+    """
+
+    def __init__(self, base_url: str | None = None, model: str | None = None):
+        """Initialize Ollama provider."""
+        super().__init__(
+            api_key="",
+            base_url=(base_url or settings.ollama_base_url).rstrip("/"),
+            default_model=model or settings.ollama_model,
+            timeout=120,  # Local CPU inference is slower than hosted APIs
+            max_retries=2,
+        )
+        self._use_pool = False
+
+    def _get_headers(self) -> dict[str, str]:
+        """Ollama is unauthenticated, so no Authorization header is sent."""
+        return {
+            "Content-Type": "application/json",
+            "User-Agent": "CidadaoAI/1.0.0",
+        }
+
+    async def complete(self, request: LLMRequest) -> LLMResponse:
+        """Complete text generation using Ollama."""
+        data = self._prepare_request_data(request)
+        start_time = datetime.now(UTC)
+
+        response_data = await self._make_request("/chat/completions", data)
+        response_time = (datetime.now(UTC) - start_time).total_seconds()
+
+        return self._parse_response(response_data, response_time)
+
+    async def stream_complete(self, request: LLMRequest) -> AsyncGenerator[str, None]:
+        """Stream text generation using Ollama."""
+        data = self._prepare_request_data(request)
+        data["stream"] = True
+
+        async for chunk in self._make_request("/chat/completions", data, stream=True):
+            if "choices" in chunk and chunk["choices"]:
+                delta = chunk["choices"][0].get("delta", {})
+                if "content" in delta:
+                    yield delta["content"]
+
+    def _prepare_request_data(self, request: LLMRequest) -> dict[str, Any]:
+        """Prepare an OpenAI-compatible chat request for Ollama."""
+        messages = []
+
+        if request.system_prompt:
+            messages.append({"role": "system", "content": request.system_prompt})
+
+        messages.extend(request.messages)
+
+        return {
+            "model": request.model or self.default_model,
+            "messages": messages,
+            "temperature": request.temperature,
+            "max_tokens": request.max_tokens,
+            "top_p": request.top_p,
+            "stream": request.stream,
+        }
+
+    def _parse_response(
+        self, response_data: dict[str, Any], response_time: float
+    ) -> LLMResponse:
+        """Parse an OpenAI-compatible response from Ollama."""
+        choice = response_data["choices"][0]
+        content = choice["message"]["content"]
+        usage = response_data.get("usage", {})
+
+        return LLMResponse(
+            content=content,
+            provider="ollama",
+            model=response_data.get("model", self.default_model),
+            usage=usage,
+            metadata={
+                "finish_reason": choice.get("finish_reason"),
+                "response_id": response_data.get("id"),
+            },
+            response_time=response_time,
+            timestamp=datetime.now(UTC),
+        )
+
+
 class LLMManager:
     """Manager for multiple LLM providers with fallback support."""
 
@@ -777,11 +871,19 @@ class LLMManager:
             enable_fallback: Enable automatic fallback on errors
         """
         self.primary_provider = primary_provider
-        self.fallback_providers = fallback_providers or [
-            LLMProvider.TOGETHER,
-            LLMProvider.HUGGINGFACE,
-            LLMProvider.MARITACA,
-        ]
+        if fallback_providers:
+            self.fallback_providers = fallback_providers
+        elif primary_provider == LLMProvider.OLLAMA:
+            # A self-hosted deployment must not silently ship prompts to
+            # third-party APIs when the local model fails. Hosted fallbacks
+            # can still be opted into by passing fallback_providers.
+            self.fallback_providers = []
+        else:
+            self.fallback_providers = [
+                LLMProvider.TOGETHER,
+                LLMProvider.HUGGINGFACE,
+                LLMProvider.MARITACA,
+            ]
         self.enable_fallback = enable_fallback
         self.logger = get_logger(__name__)
 
@@ -791,6 +893,7 @@ class LLMManager:
             LLMProvider.TOGETHER: TogetherProvider(),
             LLMProvider.HUGGINGFACE: HuggingFaceProvider(),
             LLMProvider.MARITACA: MaritacaProvider(),
+            LLMProvider.OLLAMA: OllamaProvider(),
         }
 
         self.logger.info(

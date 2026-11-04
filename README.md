@@ -115,6 +115,7 @@ python -m src.api.app
 - **Swagger UI**: http://localhost:8000/docs
 - **ReDoc**: http://localhost:8000/redoc
 - **Welcome**: http://localhost:8000/api/v1/
+- **Self-hosting** (só componentes abertos: Ollama, PostgreSQL, Redis): [docs/self-hosting.md](docs/self-hosting.md)
 
 ### Produção
 
@@ -477,6 +478,7 @@ python -m src.api.app
 - **Swagger UI**: http://localhost:8000/docs
 - **ReDoc**: http://localhost:8000/redoc
 - **Welcome**: http://localhost:8000/api/v1/
+- **Self-hosting** (open components only: Ollama, PostgreSQL, Redis): [docs/self-hosting.md](docs/self-hosting.md)
 
 ### Production
 

@@ -34,7 +34,6 @@ COPY --from=builder /install /usr/local
 
 # Copy application code
 COPY src/ ./src/
-COPY *.py ./
 COPY alembic.ini ./
 COPY alembic/ ./alembic/
 

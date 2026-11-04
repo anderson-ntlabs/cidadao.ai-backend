@@ -1,0 +1,91 @@
+# Self-hosted Cidadão.AI stack built only from open components:
+# FastAPI backend + PostgreSQL + Redis + Ollama (local open-weight LLM).
+# No Maritaca, Supabase or Vercel account is needed. See docs/self-hosting.md.
+#
+# Variables (put them in a local .env next to this file, never commit it):
+#   SECRET_KEY          required, e.g. `openssl rand -hex 32`
+#   JWT_SECRET_KEY      required, e.g. `openssl rand -hex 32`
+#   POSTGRES_PASSWORD   required, any strong local password
+#   OLLAMA_MODEL        optional, default qwen2.5:7b
+#   TRANSPARENCY_API_KEY optional, Portal da Transparência key (free sign-up);
+#                       without it the data agents run in demo mode
+#   API_PORT            optional, host port for the API, default 8000
+#
+# Usage:
+#   docker compose up -d
+#   docker compose exec ollama ollama pull qwen2.5:7b
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: config/docker/Dockerfile
+    environment:
+      APP_ENV: ${APP_ENV:-development}
+      PORT: "8000"
+      SECRET_KEY: ${SECRET_KEY:?set SECRET_KEY}
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY:?set JWT_SECRET_KEY}
+      DATABASE_URL: postgresql://cidadao:${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD}@postgres:5432/cidadao
+      REDIS_URL: redis://redis:6379/0
+      LLM_PROVIDER: ollama
+      OLLAMA_BASE_URL: http://ollama:11434/v1
+      OLLAMA_MODEL: ${OLLAMA_MODEL:-qwen2.5:7b}
+      TRANSPARENCY_API_KEY: ${TRANSPARENCY_API_KEY:-}
+    ports:
+      - "${API_PORT:-8000}:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      ollama:
+        condition: service_started
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: cidadao
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD}
+      POSTGRES_DB: cidadao
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cidadao -d cidadao"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+
+  ollama:
+    image: ollama/ollama:latest
+    volumes:
+      - ollama_data:/root/.ollama
+    # Uncomment to expose Ollama on the host (e.g. to pull models from there).
+    # ports:
+    #   - "11434:11434"
+    # Uncomment on hosts with an NVIDIA GPU and the NVIDIA Container Toolkit.
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:
+  ollama_data:

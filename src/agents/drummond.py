@@ -24,7 +24,12 @@ from src.agents.deodoro import (
 from src.core import get_logger
 from src.core.exceptions import AgentExecutionError
 from src.memory.conversational import ConversationalMemory, ConversationContext
-from src.services.maritaca_client import MaritacaClient, MaritacaMessage, MaritacaModel
+from src.services.maritaca_client import (
+    MaritacaClient,
+    MaritacaMessage,
+    MaritacaModel,
+    create_ollama_chat_client,
+)
 
 if TYPE_CHECKING:
     from src.services.chat_service import Intent
@@ -281,9 +286,15 @@ CAPACIDADES: Posso conversar e orientar. Para investigações específicas, sugi
 LEMBRE: "No meio do caminho tinha uma pedra" - vá direto ao essencial."""
 
     def _init_llm_client(self):
-        """Initialize Maritaca AI client."""
+        """Initialize the LLM client (Ollama when selected, else Maritaca AI)."""
         try:
             import os
+
+            ollama_client = create_ollama_chat_client()
+            if ollama_client:
+                self.llm_client = ollama_client
+                self.logger.info("LLM client initialized with self-hosted Ollama")
+                return
 
             api_key = os.environ.get("MARITACA_API_KEY")
             if api_key:
